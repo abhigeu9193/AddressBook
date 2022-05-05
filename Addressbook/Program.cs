@@ -1,11 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
 //Console.WriteLine("Hello, World!");
 
-internal class AddressBookSolution
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System;
+using AddressBookSolution;
+
+public class AddressBook
 {
-    public class AddressBook : AddressBookBase
-    {
-        List<Contact> addressBook = new List<AddressBookSolution.Contact>();
+        List<Contact> addressBook = new List<Contact>();
         public AddressBook()
         {
             Contact address1 = new Contact()
@@ -13,7 +20,6 @@ internal class AddressBookSolution
                 FirstName = Console.ReadLine(),
                 LastName = Console.ReadLine(),
                 Address = Console.ReadLine(),
-
                 State = Console.ReadLine(),
                 EmailAddress = Console.ReadLine(),
                 PostalCode = Convert.ToInt32(Console.ReadLine()),
@@ -22,7 +28,10 @@ internal class AddressBookSolution
 
             addressBook.Add(address1);
         }
-
+        public void AddContactToAddressBook(Contact contact)
+        {
+            addressBook.Add(contact);
+        }
         public void Display()
         {
             foreach (var contact in addressBook)
@@ -43,16 +52,5 @@ internal class AddressBookSolution
             addressBook.Remove(delete);
             Display();
         }
-    }
-
-    private class Contact
-    {
-        public string? FirstName { get; internal set; }
-        public string? LastName { get; internal set; }
-        public string? Address { get; internal set; }
-        public string? State { get; internal set; }
-        public string? EmailAddress { get; internal set; }
-        public int PostalCode { get; internal set; }
-        public long MobileNumber { get; internal set; }
-    }
-}   
+    
+}
